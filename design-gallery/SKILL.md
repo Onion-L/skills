@@ -92,11 +92,14 @@ After approval, implement all 5 pages as **UI-only** (no business logic, no real
 | Next.js (App Router) | `app/1/page.tsx`, `app/2/page.tsx` … `app/5/page.tsx` |
 | Next.js (Pages Router) | `pages/1.tsx`, `pages/2.tsx` … `pages/5.tsx` |
 | Nuxt.js | `pages/1.vue`, `pages/2.vue` … `pages/5.vue` |
-| React (React Router) | Add routes `/1` to `/5` in the router config |
-| Vue (Vue Router) | Add routes `/1` to `/5` in the router config |
+| React (React Router) | Page files in `src/pages/` — update router config **once** after all pages are written |
+| Vue (Vue Router) | Page files in `src/views/` — update router config **once** after all pages are written |
 | Plain HTML | `1.html`, `2.html` … `5.html` |
 
 If the user specified different route names during setup, use those instead.
+
+> **⚠️ Router config write order (React Router / Vue Router only):**
+> Write all 5 page component files first. Then update the single router config file in one pass with all 5 routes added. This prevents concurrent write conflicts on the shared config file.
 
 **Each page must:**
 - Fully implement its unique design direction (colours, typography, layout, spacing, components)
