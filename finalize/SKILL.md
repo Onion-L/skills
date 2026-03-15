@@ -1,9 +1,9 @@
 ---
-name: promote-design
-description: Promote a selected design-gallery variation into a production-ready landing page. Collects brand constraints, refines the chosen prototype with real copy and styling, adds SEO meta tags, migrates it to the final route, and cleans up all temporary gallery files. Use after /design-gallery when the user says "I want variation 3", "promote page 2", "go with design 1", or "ship this one". Always used after design-gallery has already generated pages.
+name: finalize
+description: Finalize a selected design-gallery variation into a production-ready landing page. Collects brand constraints, refines the chosen prototype with real copy and styling, adds SEO meta tags, migrates it to the final route, and cleans up all temporary gallery files. Use after /design-gallery when the user says "I want variation 3", "finalize page 2", "go with design 1", or "ship this one". Always used after design-gallery has already generated pages.
 ---
 
-# Promote Design
+# Finalize
 
 Take a selected design-gallery variation from prototype to production: apply brand identity, real copy, SEO, and migrate to the final route.
 
