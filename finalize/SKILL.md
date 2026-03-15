@@ -10,7 +10,9 @@ Take a selected design-gallery variation from prototype to production: apply bra
 ## Inputs
 
 - User indicates which variation they want (e.g. "I want page 3")
-- Reads `{output_root}/gallery/{id}/directions.json` to confirm direction name and description (same session ID resolution logic as `/redesign`)
+- Reads `{output_root}/gallery/{id}/directions.json` to confirm direction name and description
+
+**Session ID resolution:** Use the ID from context if available. Otherwise, scan for `directions.json` files under `gallery/`. If exactly one session exists, use it automatically. If multiple exist, list them and ask the user to pick. If none are found, stop and tell the user to run `/design-gallery` first.
 
 ---
 
@@ -40,7 +42,7 @@ If the user says "you decide" or leaves fields blank, propose values that fit th
 
 ### Step 2 — Refine the Page
 
-Upgrade the selected prototype in-place:
+Work on a **copy** of the selected prototype (e.g. `{route}.draft`), not the original. This preserves the prototype if the user cancels migration in Step 4.
 
 - Replace all placeholder copy with real content
 - Apply brand color and font across the entire page
@@ -58,7 +60,7 @@ Inject into the page's `<head>`:
 <meta name="description" content="..." />
 <meta property="og:title" content="..." />
 <meta property="og:description" content="..." />
-<meta property="og:image" content="..." />
+<!-- og:image: use provided image URL if available; otherwise omit this tag entirely -->
 ```
 
 Derive all values from real content — never use placeholder text in meta tags.
@@ -95,7 +97,11 @@ After migration, verify:
 - No `console.log` statements or `TODO` comments
 - Responsive breakpoints exist for mobile
 
-List any issues found — do not silently skip.
+**Fix automatically:** missing `alt` attributes, `console.log` statements, `TODO` comments — these are unambiguously wrong.
+
+**Ask the user before changing:** any copy-related issues (stub text, headlines that look placeholder-ish) — the user may have intentionally left them for later.
+
+Never silently skip issues.
 
 ---
 
