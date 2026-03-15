@@ -48,18 +48,7 @@ Do not proceed until the stack and output location are confirmed.
 
 ---
 
-### Step 2 — Check for Design Sub-skills
-
-Check whether either of these skills is installed in `~/.claude/skills/`:
-- A skill named `frontend-design`
-- A skill named `ui-ux-pro-max`
-
-**If a design skill is found:** Use it to guide the design language analysis in Step 3.
-**If none are found:** Proceed using your own UI/UX design expertise.
-
----
-
-### Step 3 — Analyse the Project
+### Step 2 — Analyse the Project
 
 Read the project or PRD thoroughly. Identify:
 - Core product value proposition
@@ -76,7 +65,7 @@ Use this analysis to define a design language internally. **Do not write this to
 
 ---
 
-### Step 4 — Propose 5 Design Directions (WAIT FOR APPROVAL)
+### Step 3 — Propose 5 Design Directions (WAIT FOR APPROVAL)
 
 Present exactly 5 design directions to the user. Each direction must differ in **both visual style and layout structure**. Format:
 
@@ -96,7 +85,7 @@ Shall I proceed with these, or would you like to adjust any direction?
 
 ---
 
-### Step 5 — Persist Directions to File
+### Step 4 — Persist Directions to File
 
 Immediately after the user approves the 5 directions, write a `directions.json` file **before generating any pages**.
 
@@ -106,7 +95,7 @@ Confirm to the user: `"Directions saved."`
 
 ---
 
-### Step 6 — Build the 5 Pages
+### Step 5 — Build the 5 Pages
 
 After writing `directions.json`, implement all 5 pages as **UI-only** (no business logic, no real data fetching).
 
@@ -117,7 +106,7 @@ If the user specified different route names during setup, use those instead.
 **Each page must:**
 - Fully implement its unique design direction (colours, typography, layout, spacing, components)
 - Be visually distinct from all other pages — different layout structure, not just different colours
-- Use content derived from the project analysis (see Step 3 placeholder strategy)
+- Use content derived from the project analysis (see Step 2 placeholder strategy)
 - Be self-contained and renderable without external dependencies beyond the project's installed packages
 
 **Tell the user as you complete each page:**
@@ -125,7 +114,7 @@ If the user specified different route names during setup, use those instead.
 
 ---
 
-### Step 7 — Build the Navigation / Gallery Page
+### Step 6 — Build the Navigation / Gallery Page
 
 After all 5 pages are complete, create a gallery index page at `/gallery/{id}`.
 
