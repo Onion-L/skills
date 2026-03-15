@@ -46,9 +46,17 @@ See [lib/stack-detection.md](../../lib/stack-detection.md)
 
 Do not proceed until the stack and output location are confirmed.
 
+> **Note:** If the `frontend-design` or `ui-ux-pro-max` skill is available, it will be used to guide the design analysis in Step 2.
+
 ---
 
 ### Step 2 — Analyse the Project
+
+If either of these skills is installed in `~/.claude/skills/`, use it to guide the design language analysis below:
+- `frontend-design`
+- `ui-ux-pro-max`
+
+If neither is found, proceed using your own UI/UX design expertise.
 
 Read the project or PRD thoroughly. Identify:
 - Core product value proposition
