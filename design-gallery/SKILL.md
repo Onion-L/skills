@@ -62,7 +62,7 @@ Check whether either of these skills is installed in `~/.claude/skills/`:
 - A skill named `ui-ux-pro-max`
 
 **If a design skill is found:** Use it to guide the design language analysis in Step 3.
-**If none are found:** Proceed using your own UI/UX design expertise — do not mention this to the user.
+**If none are found:** Proceed using your own UI/UX design expertise.
 
 ---
 
