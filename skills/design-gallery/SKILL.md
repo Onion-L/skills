@@ -19,12 +19,12 @@ Generate 5 distinct landing page UI variations from a project or PRD, then produ
 
 ### Step 0 — Generate Session ID
 
-Before doing anything else, generate a **6-character alphanumeric session ID** (e.g. `a3f9k2`). Use this ID as a namespace for all routes in this run:
+See [lib/session.md](../../lib/session.md) — Session ID Generation
+
+Use this ID as a namespace for all routes in this run:
 
 - Gallery index: `/gallery/{id}` (e.g. `/gallery/a3f9k2`)
 - Pages: `/gallery/{id}/1` through `/gallery/{id}/5`
-
-This prevents path collisions when multiple agents run in parallel.
 
 ---
 
@@ -37,15 +37,8 @@ Determine what the user has provided:
 - Wait for the user's answer before proceeding.
 
 **If the input is an existing codebase:**
-- Read `package.json` and config files to detect the stack.
-- **Monorepo detection:** treat it as a monorepo if **any** of these exist:
-  - A `workspaces` field in `package.json`
-  - A `pnpm-workspace.yaml` file
-  - A `turbo.json` file
-- If a monorepo is detected:
-  > "This is a monorepo. Where should I put the design gallery code? (e.g. `apps/gallery` or `packages/landing`)"
-  - Wait for the user's answer.
-- If the stack is ambiguous or you are not confident, **stop and ask the user** — do not guess.
+
+See [lib/stack-detection.md](../../lib/stack-detection.md)
 
 **Check for existing gallery routes before writing anything:**
 - Check whether `/gallery/{id}/1` through `/gallery/{id}/5` already exist as files or routes.
@@ -105,23 +98,9 @@ Shall I proceed with these, or would you like to adjust any direction?
 
 ### Step 5 — Persist Directions to File
 
-Immediately after the user approves the 5 directions, write a `directions.json` file **before generating any pages**. This file is required by the `/redesign` skill.
+Immediately after the user approves the 5 directions, write a `directions.json` file **before generating any pages**.
 
-**Path:** `{output_root}/gallery/{id}/directions.json`
-
-**Format:**
-```json
-{
-  "sessionId": "{id}",
-  "directions": [
-    { "page": 1, "name": "Dark & Bold", "description": "High contrast dark palette with split-screen hero and bold typography." },
-    { "page": 2, "name": "Minimal Clean", "description": "Lots of whitespace, single-column layout, understated type." },
-    { "page": 3, "name": "Glassmorphism", "description": "Frosted blur surfaces, asymmetric overlapping cards." },
-    { "page": 4, "name": "Corporate Pro", "description": "Muted professional palette, grid-based layout with sidebar." },
-    { "page": 5, "name": "Vibrant Playful", "description": "Expressive gradients, full-bleed sections, large visuals." }
-  ]
-}
-```
+See [lib/directions.md](../../lib/directions.md) — Format & Write Rules
 
 Confirm to the user: `"Directions saved."`
 
@@ -131,21 +110,9 @@ Confirm to the user: `"Directions saved."`
 
 After writing `directions.json`, implement all 5 pages as **UI-only** (no business logic, no real data fetching).
 
-**Routing rules — detect the project type and follow its conventions:**
-
-| Project Type | Route Convention |
-|---|---|
-| Next.js (App Router) | `app/gallery/{id}/[1–5]/page.tsx` |
-| Next.js (Pages Router) | `pages/gallery/{id}/[1–5].tsx` |
-| Nuxt.js | `pages/gallery/{id}/[1–5].vue` |
-| React (React Router) | Page files in `src/pages/` — update router config **once** after all pages are written |
-| Vue (Vue Router) | Page files in `src/views/` — update router config **once** after all pages are written |
-| Plain HTML | `gallery/{id}/1.html` … `gallery/{id}/5.html` |
+**Routing rules:** See [lib/stack-detection.md](../../lib/stack-detection.md) for the full routing convention table.
 
 If the user specified different route names during setup, use those instead.
-
-> **⚠️ Router config write order (React Router / Vue Router only):**
-> Write all 5 page component files first. Only after all 5 files exist, update the router config file in **one single pass** with all 5 routes added together. Never update the router config incrementally between pages.
 
 **Each page must:**
 - Fully implement its unique design direction (colours, typography, layout, spacing, components)

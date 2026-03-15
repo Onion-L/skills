@@ -47,6 +47,6 @@ skill-name/
 
 | Skill | Purpose |
 |---|---|
-| `design-gallery` | Generate 5 landing page design variations with a `/gallery/{id}` navigation page |
-| `redesign` | Selectively redesign one or more variations from a previous design-gallery run |
-| `finalize` | Promote a chosen design-gallery variation to a production-ready landing page |
+| `skills/design-gallery` | Generate 5 landing page design variations with a `/gallery/{id}` navigation page |
+| `skills/redesign` | Selectively redesign one or more variations from a previous design-gallery run |
+| `skills/finalize` | Promote a chosen design-gallery variation to a production-ready landing page |

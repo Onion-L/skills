@@ -16,6 +16,12 @@ A curated collection of Claude Code skills that supercharge your landing page wo
 /design-gallery  →  pick a variation  →  /redesign (optional)  →  /finalize
 ```
 
+## Installation
+
+```bash
+npx skills add {your-github-username}/{repo-name}
+```
+
 ## License
 
 MIT

@@ -12,7 +12,9 @@ Take a selected design-gallery variation from prototype to production: apply bra
 - User indicates which variation they want (e.g. "I want page 3")
 - Reads `{output_root}/gallery/{id}/directions.json` to confirm direction name and description
 
-**Session ID resolution:** Use the ID from context if available. Otherwise, scan for `directions.json` files under `gallery/`. If exactly one session exists, use it automatically. If multiple exist, list them and ask the user to pick. If none are found, stop and tell the user to run `/design-gallery` first.
+**Session ID resolution:** See [lib/session.md](../../lib/session.md) — Session ID Resolution
+
+**directions.json reference:** See [lib/directions.md](../../lib/directions.md)
 
 ---
 

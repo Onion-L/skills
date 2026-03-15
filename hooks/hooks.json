@@ -1,0 +1,4 @@
+{
+  "post-finalize": "run acceptance check after finalize completes",
+  "pre-redesign": "verify directions.json exists before redesign starts"
+}

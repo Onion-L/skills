@@ -1,0 +1,10 @@
+{
+  "name": "landing-page-skills",
+  "displayName": "Landing Page Skills",
+  "description": "End-to-end landing page generation: explore design directions, iterate, and ship.",
+  "version": "1.0.0",
+  "skills": "./skills/",
+  "agents": "./agents/",
+  "commands": "./commands/",
+  "hooks": "./hooks/hooks.json"
+}

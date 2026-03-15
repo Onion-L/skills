@@ -1,0 +1,7 @@
+{
+  "skillsPath": "./skills/",
+  "permissions": {
+    "fileWrite": ["gallery/**", "app/gallery/**", "pages/gallery/**", "src/pages/gallery/**"],
+    "fileDelete": ["gallery/**", "app/gallery/**", "pages/gallery/**", "src/pages/gallery/**"]
+  }
+}
